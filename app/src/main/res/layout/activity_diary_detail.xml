@@ -1,0 +1,1587 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#fff"
+    tools:context=".DiaryDetailActivity">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- 뒤로 가기 -->
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_back"
+            app:tint="@color/black" />
+
+        <!-- 현재 화면 타이틀 텍스트 -->
+        <TextView
+            android:id="@+id/tv_header_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="새로운 여행 담기" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <!-- 작성 완료 -->
+        <ImageView
+            android:id="@+id/iv_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/img_check"
+            app:tint="#FF781E"
+            android:contentDescription="TODO" />
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Title -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="제   목"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginRight="10dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/et_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="8dp"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:maxLength="20"
+                    android:padding="8dp"
+                    android:background="@drawable/shape_input_field" />
+
+            </LinearLayout>
+
+
+            <!-- Title Input Filed -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="여행지"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginRight="8dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/et_title2"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="8dp"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:maxLength="20"
+                    android:padding="8dp"
+                    android:background="@drawable/shape_input_field" />
+
+            </LinearLayout>
+
+            <!-- Date -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="12dp"
+                    android:text="일   시"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_date2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#039BE5"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:text="2022/10/18 Tue"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="~"
+                    android:textSize="18dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#039BE5"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:text="2022/10/18 Tue"/>
+
+            </LinearLayout>
+
+            <!-- Weather -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="10dp"
+                    android:text="날   씨"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <!-- Radio Button Group -->
+                <RadioGroup
+                    android:id="@+id/rg_weather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:background="#fff"
+                    android:checkedButton="@+id/rb_sunny"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_sunny"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:button="@null"
+                        android:background="@drawable/selector_btn_sun" />
+
+                    <RadioButton
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="16dp"
+                        android:button="@null"
+                        android:background="@drawable/selector_btn_cloudy" />
+
+                    <RadioButton
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="16dp"
+                        android:button="@null"
+                        android:background="@drawable/selector_btn_cloud" />
+
+                    <RadioButton
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="16dp"
+                        android:button="@null"
+                        android:background="@drawable/selector_btn_bad_cloud" />
+
+                    <RadioButton
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="16dp"
+                        android:button="@null"
+                        android:background="@drawable/selector_btn_rainy" />
+
+                    <RadioButton
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="16dp"
+                        android:button="@null"
+                        android:background="@drawable/selector_btn_snowy" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <!-- Content -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="시  간"
+                        android:textAlignment="textStart"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:text="내      용"
+                        android:textAlignment="center"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="경  비"
+                        android:textAlignment="textEnd"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#B3B3B3"
+                    android:layout_marginTop="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white"
+                    android:orientation="horizontal" >
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TableRow
+                            android:background="#fff"
+                            android:layout_height="10dp">
+
+                            <EditText
+                                android:id="@+id/tableTime_1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:text="07:00"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <EditText
+                                android:id="@+id/tableContext_1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:text="아시아나 비행기 탑승"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/tableSpinner_1"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd" />
+
+                            <TextView
+                                android:id="@+id/tableSpinnerResult_1"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black" />
+
+                            <EditText
+                                android:id="@+id/tableMoney_1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:text="160000"
+                                android:textAlignment="textEnd"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+
+                        </TableRow>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#B3B3B3"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"/>
+                        <TableRow
+                            android:background="#fff"
+                            android:layout_height="10dp">
+
+                            <EditText
+                                android:id="@+id/tableTime_2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:text="08:00"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <EditText
+                                android:id="@+id/tableContext_2"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/tableSpinner_2"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd" />
+
+                            <TextView
+                                android:id="@+id/tableSpinnerResult_2"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black" />
+
+                            <EditText
+                                android:id="@+id/tableMoney_2"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+
+                        </TableRow>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#B3B3B3"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"/>
+                        <TableRow
+                            android:background="#fff"
+                            android:layout_height="10dp">
+
+                            <EditText
+                                android:id="@+id/tableTime_3"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:text="09:00"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <EditText
+                                android:id="@+id/tableContext_3"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/tableSpinner_3"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd" />
+
+                            <TextView
+                                android:id="@+id/tableSpinnerResult_3"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black" />
+
+                            <EditText
+                                android:id="@+id/tableMoney_3"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+
+                        </TableRow>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#B3B3B3"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"/>
+                        <TableRow
+                            android:background="#fff"
+                            android:layout_height="10dp">
+
+                            <EditText
+                                android:id="@+id/tableTime_4"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:text="10:00"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <EditText
+                                android:id="@+id/tableContext_4"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/tableSpinner_4"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd" />
+
+                            <TextView
+                                android:id="@+id/tableSpinnerResult_4"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black" />
+
+                            <EditText
+                                android:id="@+id/tableMoney_4"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+
+                        </TableRow>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#B3B3B3"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"/>
+                        <TableRow
+                            android:background="#fff"
+                            android:layout_height="10dp">
+
+                            <EditText
+                                android:id="@+id/tableTime_5"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:text="11:00"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <EditText
+                                android:id="@+id/tableContext_5"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/tableSpinner_5"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd" />
+
+                            <TextView
+                                android:id="@+id/tableSpinnerResult_5"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black" />
+
+                            <EditText
+                                android:id="@+id/tableMoney_5"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+
+                        </TableRow>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#B3B3B3"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"/>
+                        <TableRow
+                            android:background="#fff"
+                            android:layout_height="10dp">
+
+                            <EditText
+                                android:id="@+id/tableTime_6"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:text="12:00"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <EditText
+                                android:id="@+id/tableContext_6"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/tableSpinner_6"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd" />
+
+                            <TextView
+                                android:id="@+id/tableSpinnerResult_6"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black" />
+
+                            <EditText
+                                android:id="@+id/tableMoney_6"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+
+                        </TableRow>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#B3B3B3"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"/>
+                        <TableRow
+                            android:background="#fff"
+                            android:layout_height="10dp">
+
+                            <EditText
+                                android:id="@+id/tableTime_7"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:text="13:00"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <EditText
+                                android:id="@+id/tableContext_7"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/tableSpinner_7"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd" />
+
+                            <TextView
+                                android:id="@+id/tableSpinnerResult_7"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black" />
+
+                            <EditText
+                                android:id="@+id/tableMoney_7"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+
+                        </TableRow>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#B3B3B3"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"/>
+                        <TableRow
+                            android:background="#fff"
+                            android:layout_height="10dp">
+
+                            <EditText
+                                android:id="@+id/tableTime_8"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:text="14:00"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <EditText
+                                android:id="@+id/tableContext_8"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/tableSpinner_8"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd" />
+
+                            <TextView
+                                android:id="@+id/tableSpinnerResult_8"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black" />
+
+                            <EditText
+                                android:id="@+id/tableMoney_8"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+
+                        </TableRow>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#B3B3B3"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"/>
+                        <TableRow
+                            android:background="#fff"
+                            android:layout_height="10dp">
+
+                            <EditText
+                                android:id="@+id/tableTime_9"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:text="15:00"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <EditText
+                                android:id="@+id/tableContext_9"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/tableSpinner_9"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd" />
+
+                            <TextView
+                                android:id="@+id/tableSpinnerResult_9"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black" />
+
+                            <EditText
+                                android:id="@+id/tableMoney_9"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+
+                        </TableRow>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#B3B3B3"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"/>
+                        <TableRow
+                            android:background="#fff"
+                            android:layout_height="10dp">
+
+                            <EditText
+                                android:id="@+id/tableTime_10"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:text="16:00"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <EditText
+                                android:id="@+id/tableContext_10"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/tableSpinner_10"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd" />
+
+                            <TextView
+                                android:id="@+id/tableSpinnerResult_10"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black" />
+
+                            <EditText
+                                android:id="@+id/tableMoney_10"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+
+                        </TableRow>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#B3B3B3"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"/>
+                        <TableRow
+                            android:background="#fff"
+                            android:layout_height="10dp">
+
+                            <EditText
+                                android:id="@+id/tableTime_11"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:text="17:00"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <EditText
+                                android:id="@+id/tableContext_11"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/tableSpinner_11"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd" />
+
+                            <TextView
+                                android:id="@+id/tableSpinnerResult_11"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black" />
+
+                            <EditText
+                                android:id="@+id/tableMoney_11"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+
+                        </TableRow>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#B3B3B3"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"/>
+                        <TableRow
+                            android:background="#fff"
+                            android:layout_height="10dp">
+
+                            <EditText
+                                android:id="@+id/tableTime_12"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:text="18:00"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <EditText
+                                android:id="@+id/tableContext_12"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/tableSpinner_12"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd" />
+
+                            <TextView
+                                android:id="@+id/tableSpinnerResult_12"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black" />
+
+                            <EditText
+                                android:id="@+id/tableMoney_12"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+
+                        </TableRow>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#B3B3B3"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"/>
+                        <TableRow
+                            android:background="#fff"
+                            android:layout_height="10dp">
+
+                            <EditText
+                                android:id="@+id/tableTime_13"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:text="19:00"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <EditText
+                                android:id="@+id/tableContext_13"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/tableSpinner_13"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd" />
+
+                            <TextView
+                                android:id="@+id/tableSpinnerResult_13"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black" />
+
+                            <EditText
+                                android:id="@+id/tableMoney_13"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+
+                        </TableRow>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#B3B3B3"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"/>
+                        <TableRow
+                            android:background="#fff"
+                            android:layout_height="10dp">
+
+                            <EditText
+                                android:id="@+id/tableTime_14"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:text="20:00"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <EditText
+                                android:id="@+id/tableContext_14"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/tableSpinner_14"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd" />
+
+                            <TextView
+                                android:id="@+id/tableSpinnerResult_14"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black" />
+
+                            <EditText
+                                android:id="@+id/tableMoney_14"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+
+                        </TableRow>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#B3B3B3"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"/>
+                        <TableRow
+                            android:background="#fff"
+                            android:layout_height="10dp">
+
+                            <EditText
+                                android:id="@+id/tableTime_15"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:text="21:00"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <EditText
+                                android:id="@+id/tableContext_15"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/tableSpinner_15"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd" />
+
+                            <TextView
+                                android:id="@+id/tableSpinnerResult_15"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black" />
+
+                            <EditText
+                                android:id="@+id/tableMoney_15"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+
+                        </TableRow>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#B3B3B3"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"/>
+                        <TableRow
+                            android:background="#fff"
+                            android:layout_height="10dp">
+
+                            <EditText
+                                android:id="@+id/tableTime_16"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:text="22:00"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <EditText
+                                android:id="@+id/tableContext_16"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/tableSpinner_16"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd" />
+
+                            <TextView
+                                android:id="@+id/tableSpinnerResult_16"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black" />
+
+                            <EditText
+                                android:id="@+id/tableMoney_16"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+
+                        </TableRow>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#B3B3B3"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"/>
+                        <TableRow
+                            android:background="#fff"
+                            android:layout_height="10dp">
+
+                            <EditText
+                                android:id="@+id/tableTime_17"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:text="23:00"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <EditText
+                                android:id="@+id/tableContext_17"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/tableSpinner_17"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd" />
+
+                            <TextView
+                                android:id="@+id/tableSpinnerResult_17"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black" />
+
+                            <EditText
+                                android:id="@+id/tableMoney_17"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+
+                        </TableRow>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#B3B3B3"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"/>
+                        <TableRow
+                            android:background="#fff"
+                            android:layout_height="10dp">
+
+                            <EditText
+                                android:id="@+id/tableTime_18"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:text="24:00"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <EditText
+                                android:id="@+id/tableContext_18"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/tableSpinner_18"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd" />
+
+                            <TextView
+                                android:id="@+id/tableSpinnerResult_18"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:padding="3dp"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/black" />
+
+                            <EditText
+                                android:id="@+id/tableMoney_18"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.5"
+                                android:background="@color/white"
+                                android:layout_marginBottom="1dp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+
+                        </TableRow>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#B3B3B3"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"/>
+
+                    </TableLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="메       모"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="6dp"/>
+
+                <EditText
+                    android:id="@+id/et_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|left"
+                    android:inputType="textMultiLine"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="8dp"
+                    android:singleLine="true"
+                    android:lines="15"
+                    android:maxLines="30"
+                    android:maxLength="1200"
+                    android:scrollbars="vertical"
+                    android:scrollHorizontally="false"
+                    android:overScrollMode="always"
+                    android:padding="8dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@drawable/shape_input_field" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/btn_next"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/piechart_btn"
+                android:layout_gravity="right"
+                android:layout_margin="15dp"
+                android:layout_marginTop="40dp"
+                android:onClick="onClick"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
