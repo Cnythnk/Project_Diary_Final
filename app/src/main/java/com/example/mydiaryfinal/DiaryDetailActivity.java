@@ -598,7 +598,7 @@ public class DiaryDetailActivity extends AppCompatActivity implements View.OnCli
 
         // 이전 Activity 값을 전달 받기
         Intent intent = getIntent();
-        if (intent.getExtras() != null){
+        if (intent.getExtras() != null) {
             // intent putExtra 했던 데이터가 존재한다면 내부를 수행
             DiaryModel diaryModel = (DiaryModel) intent.getSerializableExtra("diaryModel");
             mDetailMode = intent.getStringExtra("mode");
@@ -965,7 +965,7 @@ public class DiaryDetailActivity extends AppCompatActivity implements View.OnCli
                             mBeforeDate);
                     Toast.makeText(this, "다이어리 수정이 완료 되었습니다.", Toast.LENGTH_SHORT).show();
                 } else {
-                    mDatabaseHelper.setInsertDiaryList(title, title2, content, mSelectiveWeatherType, userDate, userDate2, writeDate ,
+                    mDatabaseHelper.setInsertDiaryList(title, title2, content, mSelectiveWeatherType, userDate, userDate2, writeDate,
                             tTime1, tContext1, tSpin1, tMoney1,
                             tTime2, tContext2, tSpin2, tMoney2,
                             tTime3, tContext3, tSpin3, tMoney3,

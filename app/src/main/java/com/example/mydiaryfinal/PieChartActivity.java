@@ -24,27 +24,15 @@ import java.util.List;
 
 public class PieChartActivity extends AppCompatActivity {
 
-    int TotalMoney;                                                 // 경비 총합
+    PieChart pieChart;
 
+    int TotalMoney;                                                 // 경비 총합
     int TotType0, TotType1, TotType2, TotType3;                     // 경비 타입별 합계
 
-    int CntType0 = 0;   // 경비 "기타" 타입 개수 누적 변수
-    int CntType1 = 0;   // 경비 "교통비" 타입 개수 누적 변수
-    int CntType2 = 0;   // 경비 "숙박비" 타입 개수 누적 변수
-    int CntType3 = 0;   // 경비 "식비 " 타입 개수 누적 변수
+    DiaryModel diaryModel;
 
-    DiaryModel diaryModel = new DiaryModel();
-
-    String TSpin1Type = diaryModel.getTSpin1();                     // TSpin1Type : 경비1의 타입
-    int TSpin1Money = Integer.parseInt(diaryModel.getTMoney1());    // TSpin1Money : 경비1의 금액
-
-    double per[] = {};
-//    double per[] = {49.9, 31.1, 9.9, 9.1};    // 경비 타입별 퍼센트
-
-    // 저장된 경비 항목 배열 가져오기
-    Resources res = getResources();
-    String[] money = res.getStringArray(R.array.typeArray);
-//    String money[] = {"기타", "교통비", "숙박비", "식비"};
+    String TSpin1Type;
+    int TSpin1Money;
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
@@ -60,49 +48,66 @@ public class PieChartActivity extends AppCompatActivity {
             }
         });
 
-        // 경비 타입별 개수와 합계 구하기
-        switch (TSpin1Type) {
-            case "기타" :
-                CntType0 ++;
-                TotType0 += TSpin1Money;
-                break;
-
-            case "교통비" :
-                CntType1 ++;
-                TotType1 += TSpin1Money;
-                break;
-
-            case "숙박비" :
-                CntType2 ++;
-                TotType2 += TSpin1Money;
-                break;
-
-            case "식비" :
-                CntType3 ++;
-                TotType3 += TSpin1Money;
-        }
-
-        // TODO:
-        //  TSpin1Type, TSpin2Type ... 전부 분류 작업하기
-        //  타입별 개수는 혹시 필요할까봐 추가해놓음
-
-        // 경비 타입별 퍼센트 구하기
-        per[0] = (float) TotalMoney / TotType0;
-        per[1] = (float) TotalMoney / TotType1;
-        per[2] = (float) TotalMoney / TotType2;
-        per[3] = (float) TotalMoney / TotType3;
-
         // 파이차트 생성
-        PieChart pieChart = findViewById(R.id.piechart);
+        pieChart = (PieChart) findViewById(R.id.piechart);
 
         pieChart.setUsePercentValues(true);
         pieChart.getDescription().setEnabled(false);
         pieChart.setExtraOffsets(5,10,5,5);
+
         pieChart.setDragDecelerationFrictionCoef(0.95f);
+
         pieChart.setDrawHoleEnabled(false);
-        pieChart.setCenterTextSize(18);
         pieChart.setHoleColor(Color.BLACK);
         pieChart.setTransparentCircleRadius(61f);
+
+        pieChart.setCenterTextSize(18);
+
+        // 저장된 경비 항목 배열 가져오기
+        Resources res = getResources();
+        String[] money = res.getStringArray(R.array.typeArray);    // money = {"기타", "교통비", "숙박비", "식비"}
+
+        // 경비 타입과 금액 넘겨받기
+        diaryModel = new DiaryModel();
+        TSpin1Type = diaryModel.getTSpin1();
+        // TODO: 셧다운 발생! (경비 금액을 Int형으로 변환하여 가져오기)
+//        TSpin1Money = Integer.valueOf(diaryModel.getTMoney1());
+//        TSpin1Money = Integer.parseInt(diaryModel.getTMoney1());
+
+        // 작동 확인용 샘플
+        TotType0 = 16000;
+        TotType1 = 0;
+        TotType2 = 16000;
+        TotType3 = 16000;
+
+        // 경비 타입별 합계 구하기
+        // TODO: 코드가 내려오다가 걸리도록 만들기
+//        switch (TSpin1Type) {
+//            case "기타" :
+//                TotType0 += TSpin1Money;
+//                break;
+//
+//            case "교통비" :
+//                TotType1 += TSpin1Money;
+//                break;
+//
+//            case "숙박비" :
+//                TotType2 += TSpin1Money;
+//                break;
+//
+//            case "식비" :
+//                TotType3 += TSpin1Money;
+//        }
+
+        TotalMoney = TotType0 + TotType1 + TotType2 + TotType3;
+
+        // 경비 타입별 퍼센트 구해서 배열에 넣기
+        double per[] = {0, 0, 0, 0};
+
+        per[0] = (float) TotType0 / TotalMoney * 100;
+        per[1] = (float) TotType1 / TotalMoney * 100;
+        per[2] = (float) TotType2 / TotalMoney * 100;
+        per[3] = (float) TotType3 / TotalMoney * 100;
 
         // 파이차트에 들어갈 퍼센트값 설정
         List<PieEntry> Values = new ArrayList();
