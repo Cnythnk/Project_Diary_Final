@@ -80,8 +80,7 @@ public class DiaryListAdapter extends RecyclerView.Adapter<DiaryListAdapter.View
         holder.tv_title2.setText(title2);
 
         // 여행날짜가 같을 시 출발날짜를 안보이게 함
-        if(userDate.equals(userDate2)){
-
+        if (userDate.equals(userDate2)) {
             holder.tv_user_date2.setVisibility(View.INVISIBLE);
             holder.waveIcon.setVisibility(View.INVISIBLE);
         }
@@ -111,7 +110,7 @@ public class DiaryListAdapter extends RecyclerView.Adapter<DiaryListAdapter.View
             tv_user_date2 = itemView.findViewById(R.id.tv_user_date2);
             waveIcon = itemView.findViewById(R.id.waveIcon);
 
-            // 일반 클릭 (상세 보기)
+            // 일반 클릭 (상세보기)
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -140,12 +139,13 @@ public class DiaryListAdapter extends RecyclerView.Adapter<DiaryListAdapter.View
                     DiaryModel diaryModel = mLstDiary.get(currentPosition);
 
                     // 버튼 선택지 배열
-                    String[] strChoiceArray = {"수정 하기", "삭제 하기"};
+                    String[] strChoiceArray = {"수정하기", "삭제하기"};
 
                     // 팝업 화면 표시
                     new AlertDialog.Builder(mContext)
                             .setTitle("원하시는 동작을 선택하세요")
                             .setItems(strChoiceArray, new DialogInterface.OnClickListener() {
+
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int position) {
                                     if(position == 0) {
@@ -156,6 +156,7 @@ public class DiaryListAdapter extends RecyclerView.Adapter<DiaryListAdapter.View
                                         diaryDetailIntent.putExtra("diaryModel", diaryModel);       // 다이어리 데이터 넘기기
                                         diaryDetailIntent.putExtra("mode", "modify");         // 상세보기 모드 설정
                                         mContext.startActivity(diaryDetailIntent);
+
                                     } else {
                                         // 삭제하기 버튼을 눌렀을 때
                                         // delete database

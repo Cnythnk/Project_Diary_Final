@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView mRvDiary;              // 리사이클러 뷰 (리스트 뷰)
     DiaryListAdapter mAdapter;          // 리사이클러 뷰와 연동할 어댑터
     ArrayList<DiaryModel> mLstDiary;    // 리스트에 표현할 다이어리 데이터들 (배열)
-    DataBaseHelper mDataBaseHelper;     //데이터 베이스 헬퍼 클래스
+    DataBaseHelper mDataBaseHelper;     // 데이터 베이스 헬퍼 클래스
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

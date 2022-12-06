@@ -25,6 +25,7 @@ import com.google.android.material.radiobutton.MaterialRadioButton;
 import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -34,6 +35,9 @@ import java.util.Locale;
  */
 
 public class DiaryDetailActivity extends AppCompatActivity implements View.OnClickListener {
+
+    // TODO: TEST
+    private int test1;
 
     private TextView mTvDate_start, mTvDate_end;    // 일시 설정 텍스트
 
@@ -90,13 +94,10 @@ public class DiaryDetailActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary_detail);
 
-        // 경비 Spinner 연결하기
         Resources res = getResources();
         String[] mn_type = res.getStringArray(R.array.typeArray);
 
-//      기존 코드
-//      final String[] mn_type = { "기타", "교통비", "숙박비", "식비"};
-
+        // 경비 Spinner 연결하기
         SpinResult1 = (TextView) findViewById(R.id.tableSpinnerResult_1);
         MSpinner1 = (Spinner) findViewById(R.id.tableSpinner_1);
         ArrayAdapter<String> adapter1;
@@ -526,11 +527,13 @@ public class DiaryDetailActivity extends AppCompatActivity implements View.OnCli
 
         ImageView iv_back = findViewById(R.id.iv_back);         // 뒤로가기 버튼
         ImageView iv_check = findViewById(R.id.iv_check);       // 작성완료 버튼
+        ImageView btn_next = findViewById(R.id.btn_next);       // 파이차트 버튼
 
         mTvDate_start.setOnClickListener(this);     // 클릭 기능 부여
         mTvDate_end.setOnClickListener(this);
         iv_back.setOnClickListener(this);
         iv_check.setOnClickListener(this);
+        btn_next.setOnClickListener(this);
 
         mETtime1.setOnClickListener(this);
         mETtime2.setOnClickListener(this);
@@ -698,10 +701,12 @@ public class DiaryDetailActivity extends AppCompatActivity implements View.OnCli
                 //수정모드
                 TextView tv_header_title = findViewById(R.id.tv_header_title);
                 tv_header_title.setText("일기 수정");
-            }else if (mDetailMode.equals("detail")) {
+
+            } else if (mDetailMode.equals("detail")) {
                 //상세 보기 모드
                 TextView tv_header_title = findViewById(R.id.tv_header_title);
                 tv_header_title.setText("일기 상세보기");
+                btn_next.setVisibility(View.VISIBLE);
 
                 //읽기 전용 화면으로 표시
                 MSpinner1.setEnabled(false);
@@ -926,6 +931,8 @@ public class DiaryDetailActivity extends AppCompatActivity implements View.OnCli
                 String tMoney17 = mETMoney17.getText().toString();
                 String tMoney18 = mETMoney18.getText().toString();
 
+                // TODO: TEST
+                test1 = 10;
 
                 String userDate = mSelectedUserDate_start;          // 사용자가 선택한 일시
                 if (userDate.equals("")) {
@@ -937,12 +944,12 @@ public class DiaryDetailActivity extends AppCompatActivity implements View.OnCli
                     //날짜를 설정 안 한 경우
                     userDate2 = mTvDate_end.getText().toString();
                 }
-                String writeDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.KOREAN).format(new Date()); //작성 완료 누른 시점의 일시
+                String writeDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.KOREAN).format(new Date()); // 작성 완료 누른 시점의 일시
 
 
                 // 액티비티의 현재 모드에 따라서 데이터베이스에 저장 또는 업데이트
                 if(mDetailMode.equals("modify")) {
-                    //게시글 수정 모드
+                    // 게시글 수정 모드
                     mDatabaseHelper.setUpdateDiaryList(title, title2, content, mSelectiveWeatherType, userDate, userDate2, writeDate,
                             tTime1, tContext1, tSpin1, tMoney1,
                             tTime2, tContext2, tSpin2, tMoney2,
@@ -1036,8 +1043,13 @@ public class DiaryDetailActivity extends AppCompatActivity implements View.OnCli
 
             // 통계 액티비티로 넘어가는 버튼
             case R.id.btn_next:
-                Intent intent1 = new Intent(DiaryDetailActivity.this, PieChartActivity.class);
-                startActivity(intent1);
+                Intent pieIntent = new Intent(DiaryDetailActivity.this, PieChartActivity.class);
+                // TODO: TEST
+                pieIntent.putExtra("money", test1);
+                startActivity(pieIntent);
+
+                finish();
+                break;
         }
     }
 }

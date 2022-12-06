@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.ipsec.ike.TunnelModeChildSessionParams;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -39,13 +40,19 @@ public class PieChartActivity extends AppCompatActivity {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_piechart);
 
+        // TODO: TEST
+        Intent intent = getIntent();
+        Log.e("","&&&:"+ intent.getIntExtra("money", 1));
+
         // 뒤로가기 버튼
         ImageView iv_back = findViewById(R.id.iv_back);
         iv_back.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 finish();
             }
+
         });
 
         // 파이차트 생성
@@ -67,21 +74,15 @@ public class PieChartActivity extends AppCompatActivity {
         Resources res = getResources();
         String[] money = res.getStringArray(R.array.typeArray);    // money = {"기타", "교통비", "숙박비", "식비"}
 
-        // 경비 타입과 금액 넘겨받기
-        diaryModel = new DiaryModel();
-        TSpin1Type = diaryModel.getTSpin1();
-        // TODO: 셧다운 발생! (경비 금액을 Int형으로 변환하여 가져오기)
-//        TSpin1Money = Integer.valueOf(diaryModel.getTMoney1());
-//        TSpin1Money = Integer.parseInt(diaryModel.getTMoney1());
+        // TODO: 경비 타입과 금액 넘겨받기
 
         // 작동 확인용 샘플
         TotType0 = 16000;
-        TotType1 = 0;
+        TotType1 = 16000;
         TotType2 = 16000;
         TotType3 = 16000;
 
         // 경비 타입별 합계 구하기
-        // TODO: 코드가 내려오다가 걸리도록 만들기
 //        switch (TSpin1Type) {
 //            case "기타" :
 //                TotType0 += TSpin1Money;

@@ -189,8 +189,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM DiaryInfo ORDER BY writeDate DESC", null);
-        if(cursor.getCount() != 0) {
-            while(cursor.moveToNext()) {
+        if (cursor.getCount() != 0) {
+            while (cursor.moveToNext()) {
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
                 String title = cursor.getString(cursor.getColumnIndexOrThrow("title"));
                 String title2 = cursor.getString(cursor.getColumnIndexOrThrow("title2"));
