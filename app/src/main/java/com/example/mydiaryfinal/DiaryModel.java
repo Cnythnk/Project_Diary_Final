@@ -25,6 +25,8 @@ public class DiaryModel implements Serializable {
            tSpin11, tSpin12, tSpin13, tSpin14, tSpin15, tSpin16, tSpin17, tSpin18;          // 선택한 경비 항목
     String tMoney1, tMoney2, tMoney3, tMoney4, tMoney5, tMoney6, tMoney7, tMoney8,          // 경비 금액
            tMoney9, tMoney10, tMoney11, tMoney12, tMoney13, tMoney14, tMoney15, tMoney16, tMoney17, tMoney18;
+//    배열로 간단하게 표현하기
+//    String tMoney[] = new String[18];
     String waveIcon;
 
     // getter & setter 게터세터
@@ -195,7 +197,9 @@ public class DiaryModel implements Serializable {
     public String getTMoney3() {
         return tMoney3;
     }
-    public String getTMoney4() { return tMoney4; }
+    public String getTMoney4() {
+        return tMoney4;
+    }
     public String getTMoney5() {
         return tMoney5;
     }
@@ -239,6 +243,17 @@ public class DiaryModel implements Serializable {
         return tMoney18;
     }
 
+//    배열로 간단하게 표현하기
+//    public String getTMoney(int i) {
+//        return tMoney[i];
+//    };
+//
+//    public void setTMoney(String[] tMoney) {
+//        for (int i=0; i<tMoney.length; i++) {
+//            this.tMoney[i] = tMoney[i];
+//        }
+//    }
+
     public void setTMoney1(String tMoney1) {
         this.tMoney1 = tMoney1;
     }
@@ -254,7 +269,9 @@ public class DiaryModel implements Serializable {
     public void setTMoney5(String tMoney5) {
         this.tMoney5 = tMoney5;
     }
-    public void setTMoney6(String tMoney6) { this.tMoney6 = tMoney6; }
+    public void setTMoney6(String tMoney6) {
+        this.tMoney6 = tMoney6;
+    }
     public void setTMoney7(String tMoney7) {
         this.tMoney7 = tMoney7;
     }
@@ -295,8 +312,9 @@ public class DiaryModel implements Serializable {
     public void setUserDate(String userDate) {
         this.userDate = userDate;
     }
-
-    public void setUserDate2(String userDate2) {this.userDate2 = userDate2;}
+    public void setUserDate2(String userDate2) {
+        this.userDate2 = userDate2;
+    }
 
     public String getWriteDate() {
         return writeDate;
@@ -306,8 +324,12 @@ public class DiaryModel implements Serializable {
         this.writeDate = writeDate;
     }
 
-    public String getWaveIcon() { return waveIcon; }
+    public String getWaveIcon() {
+        return waveIcon;
+    }
 
-    public void setWaveIcon(String waveIcon) { this.waveIcon = waveIcon; }
+    public void setWaveIcon(String waveIcon) {
+        this.waveIcon = waveIcon;
+    }
 
 }

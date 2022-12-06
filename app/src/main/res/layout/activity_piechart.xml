@@ -76,12 +76,13 @@
                     android:text="교통비 :  "/>
 
                 <TextView
+                    android:id="@+id/et_type1"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:textColor="#207FB1"
                     android:gravity="center"
-                    android:textSize="16sp"
-                    android:text="260,595"/>
+                    android:text="260,595"
+                    android:textColor="#207FB1"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -117,6 +118,7 @@
                     android:text="숙박비 :  "/>
 
                 <TextView
+                    android:id="@+id/et_type2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textColor="#00BE9F"
@@ -166,12 +168,13 @@
                     android:text="식    비 :  "/>
 
                 <TextView
+                    android:id="@+id/et_type3"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:textColor="#F9D169"
                     android:gravity="center|right"
-                    android:textSize="16sp"
-                    android:text="163,000"/>
+                    android:text="163,000"
+                    android:textColor="#F9D169"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -207,6 +210,7 @@
                     android:text="기    타 :  "/>
 
                 <TextView
+                    android:id="@+id/et_type0"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textColor="@color/black"
@@ -243,7 +247,7 @@
             android:layout_gravity="center"/>
 
         <TextView
-            android:id="@+id/et_money"
+            android:id="@+id/et_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="523,845원"

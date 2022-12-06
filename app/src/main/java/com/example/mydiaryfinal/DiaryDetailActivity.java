@@ -29,15 +29,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 /**
  * 상세보기 화면 or 작성하기 화면이다.
  */
 
 public class DiaryDetailActivity extends AppCompatActivity implements View.OnClickListener {
-
-    // TODO: TEST
-    private int test1;
 
     private TextView mTvDate_start, mTvDate_end;    // 일시 설정 텍스트
 
@@ -463,9 +461,9 @@ public class DiaryDetailActivity extends AppCompatActivity implements View.OnCli
 
         mTvDate_start = findViewById(R.id.tv_date);             // 일시 설정 텍스트
         mTvDate_end = findViewById(R.id.tv_date2);
-        mEtTitle = findViewById(R.id.et_title);                 // 제목 입력필드
-        mEtTitle2 = findViewById(R.id.et_title2);
-        mEtContent = findViewById(R.id.et_content);             // 내용 입력필드
+        mEtTitle = findViewById(R.id.et_title);                 // 제목
+        mEtTitle2 = findViewById(R.id.et_title2);               // 여행지
+        mEtContent = findViewById(R.id.et_content);             // 내용
         mRgWeather = findViewById(R.id.rg_weather);             // 날씨 선택 라디오 그룹
 
         mETtime1 = findViewById(R.id.tableTime_1);
@@ -837,7 +835,7 @@ public class DiaryDetailActivity extends AppCompatActivity implements View.OnCli
                 mSelectiveWeatherType = mRgWeather.indexOfChild(findViewById(mRgWeather.getCheckedRadioButtonId()));
 
                 // 입력필드 작성란이 비어있는지 체크
-                if(mEtTitle.getText().length() == 0 || mEtContent.getText().length() == 0){
+                if(mEtTitle.getText().length() == 0 || mEtTitle2.getText().length() == 0) {
                     // error
                     Toast.makeText(this, "입력되지 않은 필드가 존재합니다.", Toast.LENGTH_SHORT).show();
                     return;     // 밑의 로직을 태우지 않고 되돌려 보냄
@@ -848,6 +846,37 @@ public class DiaryDetailActivity extends AppCompatActivity implements View.OnCli
                     // error
                     Toast.makeText(this, "날씨를 선택해주세요.", Toast.LENGTH_SHORT).show();
                     return;     // 밑의 로직을 태우지 않고 되돌려 보냄
+                }
+
+                // 시간의 형식이 맞지 않을 때
+                EditText[] timeTableN = {
+                        mETtime1, mETtime2, mETtime3,
+                        mETtime4, mETtime5, mETtime6,
+                        mETtime7, mETtime8, mETtime9,
+                        mETtime10, mETtime11, mETtime12,
+                        mETtime13, mETtime14, mETtime15,
+                        mETtime16, mETtime17, mETtime18
+                };
+
+                Integer[] timetableID = {
+                        R.id.tableTime_1, R.id.tableTime_2, R.id.tableTime_3,
+                        R.id.tableTime_4, R.id.tableTime_5, R.id.tableTime_6,
+                        R.id.tableTime_7, R.id.tableTime_8, R.id.tableTime_9,
+                        R.id.tableTime_10, R.id.tableTime_11, R.id.tableTime_12,
+                        R.id.tableTime_13, R.id.tableTime_14, R.id.tableTime_15,
+                        R.id.tableTime_16, R.id.tableTime_17, R.id.tableTime_18,
+                };
+
+                for (int i=0; i<timeTableN.length; i++) {
+                    timeTableN[i] = findViewById(timetableID[i]);
+                }
+
+                for (int i=0; i<18; i++) {
+                    if (!Pattern.matches("^([0-9]{1,2}):([0-9]{1,2})$", (CharSequence) timeTableN[i].getText().toString())) {
+                        // error
+                        Toast.makeText(this, "시간 형식을 지켜주세요.", Toast.LENGTH_SHORT).show();
+                        return;     // 밑의 로직을 태우지 않고 되돌려 보냄
+                    }
                 }
 
                 // 이 곳까지 도착했다면 에러상황이 없으므로 데이터 저장!
@@ -930,9 +959,6 @@ public class DiaryDetailActivity extends AppCompatActivity implements View.OnCli
                 String tMoney16 = mETMoney16.getText().toString();
                 String tMoney17 = mETMoney17.getText().toString();
                 String tMoney18 = mETMoney18.getText().toString();
-
-                // TODO: TEST
-                test1 = 10;
 
                 String userDate = mSelectedUserDate_start;          // 사용자가 선택한 일시
                 if (userDate.equals("")) {
@@ -1044,8 +1070,6 @@ public class DiaryDetailActivity extends AppCompatActivity implements View.OnCli
             // 통계 액티비티로 넘어가는 버튼
             case R.id.btn_next:
                 Intent pieIntent = new Intent(DiaryDetailActivity.this, PieChartActivity.class);
-                // TODO: TEST
-                pieIntent.putExtra("money", test1);
                 startActivity(pieIntent);
 
                 finish();

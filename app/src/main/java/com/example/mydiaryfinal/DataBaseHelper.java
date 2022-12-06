@@ -7,14 +7,16 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.example.mydiaryfinal.DiaryModel;
-
 import java.util.ArrayList;
 
 // 데이터 관리 클래스
 public class DataBaseHelper extends SQLiteOpenHelper {
+
     private static final  int DB_VERSION = 1;
     private static final String DB_NAME = "MyDiary.db";
+
+    String[] MoneyList = new String[18];   // 경비값만 모아놓은 배열
+    String[] TypeList = new String[18];    // 경비타입만 모아놓은 배열
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -399,6 +401,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return lstDiary;
     }
+
     // 수정 메소드 - UPDATE
     public void setUpdateDiaryList(String _title, String _title2, String _content, int _weatherType,
                                    String _userDate, String _userDate2, String _writeDate,
@@ -452,4 +455,44 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("DELETE FROM DiaryInfo WHERE writeDate = '" + _writeDate + "'");
     }
+
+
+    // 경비 금액만 배열로 모아서 파이차트로 넘기기
+    public String[] getMoneyList() {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM DiaryInfo ORDER BY writeDate DESC", null);
+        if (cursor.getCount() != 0) {
+            while (cursor.moveToNext()) {
+                for (int i=0; i<MoneyList.length; i++) {
+                    if (cursor.getString(11+(i*4)).isEmpty()) {
+                        MoneyList[i] = "0";
+                    } else {
+                        MoneyList[i] = cursor.getString(11 + (i * 4));
+                    }
+                }
+            }
+        }
+        cursor.close();
+        return MoneyList;
+    }
+
+    // 경비 타입만 배열로 모아서 파이차트로 넘기기
+    public String[] getTypeList() {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM DiaryInfo ORDER BY writeDate DESC", null);
+        if (cursor.getCount() != 0) {
+            while (cursor.moveToNext()) {
+                for (int i=0; i<TypeList.length; i++) {
+                    if (cursor.getString(10+(i*4)).isEmpty()) {
+                        TypeList[i] = "기타";
+                    } else {
+                        TypeList[i] = cursor.getString(10 + (i * 4));
+                    }
+                }
+            }
+        }
+        cursor.close();
+        return TypeList;
+    }
+
 }
