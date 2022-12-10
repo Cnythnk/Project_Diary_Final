@@ -467,7 +467,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     if (cursor.getString(11+(i*4)).isEmpty()) {
                         MoneyList[i] = "0";
                     } else {
-                        MoneyList[i] = cursor.getString(11 + (i * 4));
+                        MoneyList[i] = cursor.getString(11+(i*4));
                     }
                 }
             }
@@ -486,7 +486,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     if (cursor.getString(10+(i*4)).isEmpty()) {
                         TypeList[i] = "기타";
                     } else {
-                        TypeList[i] = cursor.getString(10 + (i * 4));
+                        TypeList[i] = cursor.getString(10+(i*4));
                     }
                 }
             }

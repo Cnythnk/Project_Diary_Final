@@ -151,21 +151,4 @@ public class PieChartActivity extends AppCompatActivity {
         pieChart.setData(data);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // Activity 재개
-
-        // TODO: 파이차트 갱신 기능 필요!
-        //  혹은 DataBaseHelper 클래스에서 경비 받아오는 쿼리문을 조작해도 될것같음
-//        setLoadMoneyArray();
-
-    }
-
-//    private void setLoadMoneyArray() {
-//        pieMoneyArray = new ArrayList<>();
-//        if (!pieMoneyArray.isEmpty()) {
-//            pieMoneyArray.clear();
-//        }
-//    }
 }
